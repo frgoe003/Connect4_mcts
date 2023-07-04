@@ -1,35 +1,98 @@
 body {
-    padding: 0 0;
-    margin: 0 0;
-    display: flex;
-    flex-direction: row
-  }
+  padding: 0;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
-  .col {
-    background: gray;
-    flex: 0;
-    display: flex;
+.grid-container {
+  max-width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 100%;
+}
+
+#result {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  max-width: 480px;
+
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+#resultReset{
+  padding: 10px;
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  max-width: 480px;
+
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+
+#reset {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  cursor: pointer;
     flex-direction: column;
-  }
+  align-items: center; /* Align items in the center horizontally */
+  justify-content: center; /* Align items in the center vertically */
+}
 
-  .col:hover {
-    background: darkgray;
-  }
+.col {
+  background: gray;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align items in the center horizontally */
+  justify-content: center; /* Align items in the center vertically */
+}
 
-  .row {
-    background: rgb(255, 255, 255);
-    height: 50px;
-    width: 50px;
-    border: 1px solid black;
-    border-radius: 25px;
-    margin: 4px;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2) inset;
-  }
 
-  .row.player {
-    background: gold;
-  }
+.col:hover {
+  background: darkgray;
+}
 
-  .row.opponent {
-    background: red;
-  }
+.row {
+  background: rgb(255, 255, 255);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+  border-radius: 40px;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2) inset;
+}
+
+.row.player {
+  background: gold;
+}
+
+.row.opponent {
+  background: red;
+}
+
+.side {
+  margin-top: 20px;
+  max-width: 100px;
+  display: flex;
+
+}
+.fieldset-wrapper {
+  flex: 1;
+  margin-right: 10px; /* Adjust spacing between fieldsets */
+}

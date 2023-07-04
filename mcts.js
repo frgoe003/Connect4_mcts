@@ -22,11 +22,11 @@ class Node {
 
 
 export class MonteCarloTreeSearch {
-    constructor(state, player = 2, iterations = 50000, exploration_c = Math.sqrt(2)) {
+    constructor(state, player = 2, iterations = 1000, exploration_c = Math.sqrt(2)) {
         this.state = state
         this.player = player
         this.iterations = iterations
-        this.exploration_c = exploration_c      
+        this.exploration_c = Math.sqrt(2)
     }
 
     getRandomChild(node) {
@@ -47,6 +47,7 @@ export class MonteCarloTreeSearch {
         let bestChild = -1;
         let bestRatio = -(10**10);
 
+        /*
         for (let i = 0; i < root.children.length; i++) {
             let child = root.children[i]
             let currWins = child.wins
@@ -57,8 +58,7 @@ export class MonteCarloTreeSearch {
                 bestRatio = currWins
             }
         }
-
-        /*
+            */
         for (let i = 0; i < root.children.length; i++) {
             let child = root.children[i]
             let currRatio = child.wins / child.visits
@@ -69,7 +69,6 @@ export class MonteCarloTreeSearch {
                 bestRatio = currRatio
             }
         }
-        */
 
         return bestChild.col
     }
@@ -118,7 +117,7 @@ export class MonteCarloTreeSearch {
         if (board.winner == -1){
             return 0
         }
-        return board.winner == this.player ? 1 : 0
+        return board.winner == this.player ? 1 : -1
     }
 
     backpropagate(node, result) {

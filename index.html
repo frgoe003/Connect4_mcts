@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Connect Four</title>
 
-  <link href="bs5/css/bootstrap.min.css" rel="stylesheet">
   <link href="main.css" rel="stylesheet">
   
   <!-- Import TensorFlow.js -->
@@ -19,63 +18,71 @@
 </head>
 
 <body>
-  <div class="col" id="col1">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
+  <div class="grid-container">
+    <div class="col" id="col1">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="col" id="col2">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="col" id="col3">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="col" id="col4">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="col" id="col5">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="col" id="col6">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+    <div class="col" id="col7">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
   </div>
-  <div class="col" id="col2">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-  </div>
-  <div class="col" id="col3">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-  </div>
-  <div class="col" id="col4">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-  </div>
-  <div class="col" id="col5">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-  </div>
-  <div class="col" id="col6">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-  </div>
-  <div class="col" id="col7">
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-  </div>
+
+  <div id="result"></div>
+
+
   <div class="side">
+    <div class="fieldset-wrapper">
+
     <form id="level">
       <fieldset>
         <legend>AI Level</legend>
@@ -123,17 +130,46 @@
       </fieldset>
     </form>
   </div>
-  <div>
-    <button id="reset">Reset</button>
+</div>
+    <!-- 
+  <div class="fieldset-wrapper">
+  <div class="side">
+    <form id="level">
+      <fieldset>
+        <legend>Exploration constant</legend>
+        <div>
+          <input type="radio" id="level1" value="1" name="level" />
+          <label for="level1">1</label>
+        </div>
+        <div>
+          <input type="radio" id="level2" value="2" name="level" />
+          <label for="level2">sqrt(2)</label>
+        </div>
+        <div>
+          <input type="radio" id="level3" value="3" name="level" />
+          <label for="level3">3</label>
+        </div>
+        <div>
+          <input type="radio" id="level4" value="4" name="level" />
+          <label for="level4">4</label>
+        </div>
+      </fieldset>
+    </form>
   </div>
-  <div>
-    <p>
-      
-    </p>
-
+ -->
   </div>
 
-  <script src="index.js" type="module"></script>
+</div>
+
+<div>
+  <button id="reset">Reset</button>
+  <div id="resultReset"></div>
+</div>
+
 </body>
+
+
+
+<script src="index.js" type="module"></script>
 
 </html>
