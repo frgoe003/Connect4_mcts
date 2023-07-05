@@ -156,6 +156,7 @@ function update() {
         else if (game.winner === 2) {
             var item = ai_win_messages[Math.floor(Math.random()*ai_win_messages.length)];
             result.innerHTML = item;
+            result.style = "margin-top: 20px; margin-bottom: 20px;padding: 10px;border: 1px solid rgb(0, 0, 0);border-radius: 5px;background: rgb(255, 255, 255);max-width: 480px;text-align: center;font-size: 20px;font-weight: bold;color: rgb(0, 0, 0);"
             resultReset.innerHTML = "Click Reset to play again!";
         }
         return;
@@ -165,7 +166,7 @@ function update() {
     //clone.verbose = false;
     clone.currentPlayer = 2;
     MCTS.state = clone;
-    MCTS.iterations = checkedValue*5000;
+    MCTS.iterations = (10 * (checkedValue - 1) + 1) * 10 * checkedValue;;
 
     if (game.currentPlayer === 2) { // AI's turn
         //let move = MCTS.getRandomMove();

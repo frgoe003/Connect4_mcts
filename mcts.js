@@ -6,7 +6,6 @@ class Node {
         this.children = new Array()
         this.col = col
         this.state = state
-        this.isLeaf = false;
 
         this.possibleMoves = possibleMoves // Possible moves from this state
 
@@ -26,7 +25,7 @@ export class MonteCarloTreeSearch {
         this.state = state
         this.player = player
         this.iterations = iterations
-        this.exploration_c = Math.sqrt(2)
+        this.exploration_c = exploration_c
     }
 
     getRandomChild(node) {
@@ -44,32 +43,21 @@ export class MonteCarloTreeSearch {
             let result = this.playout(child.state.clone())
             this.backpropagate(child, result)
         }
+        console.log(root)
         let bestChild = -1;
         let bestRatio = -(10**10);
 
-        /*
+       
         for (let i = 0; i < root.children.length; i++) {
             let child = root.children[i]
-            let currWins = child.wins
-            console.log('col: '+child.col, 'wins: ', currWins)
+            let currVisits = child.visits
+            console.log('col: '+child.col, 'visits: ', currVisits)
 
-            if (currWins > bestRatio) {
+            if (currVisits > bestRatio) {
                 bestChild = child
-                bestRatio = currWins
+                bestRatio = currVisits
             }
         }
-            */
-        for (let i = 0; i < root.children.length; i++) {
-            let child = root.children[i]
-            let currRatio = child.wins / child.visits
-            console.log('col: '+child.col, 'winratio: ', currRatio)
-
-            if (currRatio > bestRatio) {
-                bestChild = child
-                bestRatio = currRatio
-            }
-        }
-
         return bestChild.col
     }
 
@@ -93,6 +81,14 @@ export class MonteCarloTreeSearch {
     }
     
     expand(currNode) {
+
+        if (currNode.state.isGameOver) {
+            if (currNode.state.winner == this.player) {
+                currNode.wins+=1
+            }
+            return currNode
+        }
+
         let moves = currNode.possibleMoves
         let randChoice = Math.floor(Math.random() * moves.length)
         let move = moves[randChoice]
@@ -117,18 +113,24 @@ export class MonteCarloTreeSearch {
         if (board.winner == -1){
             return 0
         }
-        return board.winner == this.player ? 1 : -1
+        return (board.winner==this.player) ? 1 : 2
     }
 
-    backpropagate(node, result) {
+    backpropagate(node, winner) {
+
         while (node != null) {
             node.visits += 1
-            node.wins += result
+            if (node.state.currentPlayer == winner){
+                node.wins += 1
+            }
             node = node.parent
         }
     }
 
     get_ucb(node){
+        if (node.visits == 0){
+            return 10**10
+        }
         return node.wins / node.visits + this.exploration_c * Math.sqrt(Math.log(node.parent.visits) / node.visits)
     }
 
